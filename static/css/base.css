@@ -10,7 +10,7 @@ body {
     font-family: 'Lato';
 }
 
-/* from Bulma - another CSS framework similar to Bootstrap. To make font awesome icons size consistent unless manually changed*/
+/* from Bulma */
 .icon {
     align-items: center;
     display: inline-flex;
@@ -60,6 +60,16 @@ body {
     background: #000 !important;
 }
 
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: white;
+	z-index: -1;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -79,7 +89,7 @@ body {
         z-index: 1030;
     }
 
-    .header-container {     /* This pushes the main body down to the bottom of the main page header */
+    .header-container {
         padding-top: 164px;
     }
 }
