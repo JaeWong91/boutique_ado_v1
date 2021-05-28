@@ -42,9 +42,15 @@
                     {% else %}
                         <small class="text-muted">No Rating</small>
                     {% endif %}
+                    {% if request.user.is_superuser %}
+                        <small class="ml-3">
+                            <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                        </small>
+                    {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
-                        {% csrf_token %}    <!-- Django's cross site request forgery protection, without this token, django will not allow you to submit the form-->
+                        {% csrf_token %}
                         <div class="form-row">
                             {% with product.has_sizes as s %}
                             {% if s %}
@@ -96,7 +102,7 @@
                                 </a>
                                 <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
                             </div>
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">  <!--redirect user to the same page as current URL-->
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% endwith %}
                         </div>
                     </form>
